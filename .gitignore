@@ -27,3 +27,6 @@
 *.exe
 *.out
 *.app
+
+# google test
+/bn_tests/lib/googletest-master/

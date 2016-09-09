@@ -2,10 +2,15 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/bn/bn007.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/bn/contingency_table.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/bn/sorted_set.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/bn/Node.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/bn/ad_tree.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/bn/typedefs.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/bn/BayesianNetwork.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/bn/bn007.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/bn/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/bn/typedefs.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/bn/bn007.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/bn_tests/basic_tests/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/bn_tests/basic_tests/bn007_check.cpp" isTestSource="false" />
