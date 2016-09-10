@@ -45,7 +45,7 @@ public:
 
 private:
     std::unique_ptr<AD_node> root_;
-    size_t Rmin;
+    size_t R_min_;
 };
 
 

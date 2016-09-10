@@ -6,8 +6,10 @@
 #define LIBCPPBN_TYPEDEFS_H_H
 
 #include <string>
+#include <boost/multiprecision/cpp_int.hpp>
 
 using real = double;
+using bigint = boost::multiprecision::cpp_int;
 
 #define RESET       "\033[0m"
 #define RED         "\033[31m"      /* Red */

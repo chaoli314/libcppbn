@@ -37,14 +37,12 @@ public:
         return c.size();
     }
 
-//    reference       operator[](size_type n){}
-  //  const_reference operator[](size_type n) const{}
+    //    reference       operator[](size_type n){}
+    //  const_reference operator[](size_type n) const{}
 
-
+    /** @name Group 1
+     * Details */
     //@{
-    /** Same documentation for members. Details */
-
-
     /** Function without group. Details. */
     sorted_set operator- (const sorted_set & r) const {
         sorted_set result;
@@ -66,17 +64,20 @@ public:
 
 
 
-/** @name Group2
- *  Description of group 2.
- */
+
+/**
+ * @name group 2
+ * Details
+ * */
 ///@{
 
-/** Function 2 in group 2. Details. */
+/// Function 1 in group 2. Brief.
+/** Function 1 in group 2. Details. */
 
     bool includes(const sorted_set & r) const {
         return std::includes(this->c.cbegin(), this->c.cend(),r.c.cbegin(),r.c.cend());
     }
-
+/** Function 2 in group 2. Details. */
     bool contains(const T& x) const {
         return std::binary_search( c.cbegin(), c.cend(), x);
     }
