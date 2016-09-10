@@ -14,7 +14,7 @@ set(HEADER_FILES
         contingency_table.h
 
         sorted_set.h
-        )
+        var.h)
 
 set(SOURCE_FILES
         bn007.cpp

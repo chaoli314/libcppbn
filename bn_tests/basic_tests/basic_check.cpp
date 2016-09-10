@@ -23,13 +23,4 @@ EXPECT_NE(1, 0);
             std::sqrt(123.456L); // burn some time
 
 
-    // Repeat at arbitrary precision:
-    bigint j = 1;
-    for(auto i = 1; i <= 20; ++i)
-        j *= i;
-    EXPECT_EQ(2432902008176640000, j);
-    EXPECT_LT(-100,j);
-    EXPECT_GT(j,100);
-    //std::cout << j << std::endl; // prints 100!
-
 }

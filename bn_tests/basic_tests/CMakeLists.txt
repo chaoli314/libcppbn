@@ -4,7 +4,7 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 add_executable(runBasicBNTests
         basic_check.cpp
         bn007_check.cpp
-        )
+        typedefs_check.cpp)
 
 target_link_libraries(runBasicBNTests gtest gtest_main)
 target_link_libraries(runBasicBNTests bn)

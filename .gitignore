@@ -30,3 +30,6 @@
 
 # google test
 /bn_tests/lib/googletest-master/
+
+#documents
+doc/
