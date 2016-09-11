@@ -27,7 +27,7 @@ public:
 
 /**  @name Lookup */
     //@{
-    size_t getStateIndex(const std::string &stateLabel) const { return label_to_index_[stateLabel]; }
+    size_t getStateIndex(const std::string &stateLabel) { return label_to_index_[stateLabel]; }
 
     std::string getStateLabel(size_t stateIndex) const { return index_to_label_[stateIndex]; }
 
@@ -70,9 +70,8 @@ private:
     std::string node_name_;  //!< The name of this node
     size_t node_index_; ///< The index of this node
 
-    std::map<std::string, size_t> label_to_index_;
     std::vector<std::string> index_to_label_;
-
+    std::map<std::string, size_t> label_to_index_;
 
     vector<Node *> parents_;
 

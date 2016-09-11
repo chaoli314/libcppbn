@@ -7,7 +7,7 @@
 #include <boost/rational.hpp>
 #include "bn/BayesianNetwork.h"
 #include "bn/sorted_set.h"
-#include "bn007.h"
+#include "bn/var.h"
 #include "bn/typedefs.h"
 
 using namespace std;
@@ -16,38 +16,11 @@ int main() {
 
     BayesianNetwork network;
 
-    std::cout << BOLDRED << "bold red text" << RESET << std::endl;
 
 #if !defined(NDEBUG)
-    cout << "DEBUG code is here!" << endl;
+    cout << BOLDRED << "DEBUG code is here!"<< RESET << endl;
+    std::cout << BOLDRED << "BOLD red text" << RESET<< " normal text" << RED<< " red text" << RESET << std::endl;
 #endif
-
-    boost::timer::auto_cpu_timer t;
-
-    bn007* bn = new bn007();
-
-    string s{"hel"};
-
-    bn->talk();
-
-    bn->tell(s);
-
-    delete bn;
-
-    sorted_set<int> a;
-
-
-    real value = 0.3;
-
-    std::cout << "real value: " << value << std::endl;
-
-
-
-    std::cout << "Hello, World!" << std::endl;
-
-
-    for (long i = 0; i < 100000000; ++i)
-        std::sqrt(123.456L); // burn some time
 
     return 0;
 }

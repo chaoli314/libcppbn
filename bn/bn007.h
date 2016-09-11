@@ -34,13 +34,12 @@ public:
     /// \return
 
     bn007(){
-        std::cout << "build an empty bn007 object." << std::endl;
+        std::cout << "new an empty bn007 object." << std::endl;
     }
 
 
     ~bn007(){
         std::cout << "delete an empty bn007 object." << std::endl;
-
     }
 
 /*! \brief Brief description.
@@ -51,7 +50,6 @@ public:
 
     void talk(){
         std::cout << "talk: 我是007!" << std::endl;
-
     }
 
     //! 说一个string函数

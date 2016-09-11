@@ -11,28 +11,32 @@
 
 using namespace std;
 
-template< class T >
+template<class E>
 class sorted_set {
 private:
-    using Container = std::vector<T>;
+    using Container = std::vector<E>;
 public:
     typedef typename Container::size_type size_type;
+    typedef typename Container::iterator iterator;
+    typedef typename Container::const_iterator const_iterator;
+
+    // typedef typename Container::value_type value_type;
+    //  typedef value_type&                                         reference;
+    //  typedef const value_type&                                   const_reference;
+
+    // typedef typename Container::reference reference;
+    // typedef typename Container::const_reference const_reference;
+    //  typedef Container container_type;
 
 
-   // typedef typename Container::value_type value_type;
-  //  typedef value_type&                                         reference;
-  //  typedef const value_type&                                   const_reference;
 
-   // typedef typename Container::reference reference;
-   // typedef typename Container::const_reference const_reference;
-  //  typedef Container container_type;
-
-  //  typedef typename Container::iterator                          iterator;
-  //  typedef typename Container::const_iterator                          const_iterator;
+    sorted_set(const E &e) : c() { c.push_back(e); }
+    sorted_set() : c() {}
 
     bool empty() const {
         return c.empty();
     }
+
     size_type size() const {
         return c.size();
     }
@@ -40,33 +44,51 @@ public:
     //    reference       operator[](size_type n){}
     //  const_reference operator[](size_type n) const{}
 
-    /** @name Group 1
-     * Details */
+/**
+ * @name Group
+ * */
     //@{
     /** Function without group. Details. */
-    sorted_set operator- (const sorted_set & r) const {
+    sorted_set operator-(const sorted_set &r) const {
         sorted_set result;
-        std::set_difference( c.cbegin(), c.cend(), r.c.cbegin(), r.c.cend(), std::back_inserter(result)  );
+        std::set_difference(c.cbegin(), c.cend(), r.c.cbegin(), r.c.cend(), std::back_inserter(result));
         return result;
     }
 
-    sorted_set operator& (const sorted_set & r) const {
+    sorted_set operator&(const sorted_set &r) const {
         sorted_set result;
-        std::set_intersection( c.cbegin(), c.cend(), r.c.cbegin(), r.c.cend(), std::back_inserter( result.c ) );
+        std::set_intersection(c.cbegin(), c.cend(), r.c.cbegin(), r.c.cend(), std::back_inserter(result.c));
         return result;
     }
-    sorted_set operator| (const sorted_set & r) const {
+
+    sorted_set operator|(const sorted_set &r) const {
         sorted_set result;
-        std::set_union( c.cbegin(), c.cend(), r.c.cbegin(), r.c.cend(), std::back_inserter( result.c ) );
+        std::set_union(c.cbegin(), c.cend(), r.c.cbegin(), r.c.cend(), std::back_inserter(result.c));
         return result;
     }
     //@}
 
+/**
+ * @name Modifiers
+ * */
+    //@{
 
 
+
+    bool insert(const E &e) {
+        // iterator pointing to the first element does not less than e
+        auto it = std::lower_bound(c.cbegin(), c.cend(), e);
+        if (c.end() == it) c.push_back(e); // if e is the max
+        if (e < *it) c.insert(it, e);   // if e is should be located here
+        if (e == *it) return false;// if e is duplicate
+        return true;
+    }
+
+
+    //@}
 
 /**
- * @name group 2
+ * @name Lookup
  * Details
  * */
 ///@{
@@ -74,22 +96,19 @@ public:
 /// Function 1 in group 2. Brief.
 /** Function 1 in group 2. Details. */
 
-    bool includes(const sorted_set & r) const {
-        return std::includes(this->c.cbegin(), this->c.cend(),r.c.cbegin(),r.c.cend());
+    bool includes(const sorted_set &r) const {
+        return std::includes(this->c.cbegin(), this->c.cend(), r.c.cbegin(), r.c.cend());
     }
+
 /** Function 2 in group 2. Details. */
-    bool contains(const T& x) const {
-        return std::binary_search( c.cbegin(), c.cend(), x);
+    bool contains(const E &x) const {
+        return std::binary_search(c.cbegin(), c.cend(), x);
     }
 
     // bool disjoint(const sorted_set & r)    {   return true;  }
 
 ///@}
 
-
-
-
-//    void push_back(const T& x){ c.push_back(x); }
 
 
 

@@ -8,8 +8,15 @@
 #include <string>
 #include <boost/multiprecision/cpp_int.hpp>
 
-using real = double;
-using bigint = boost::multiprecision::cpp_int;
+namespace cppbn{
+
+    using real = double;
+    using Bigint = boost::multiprecision::checked_cpp_int;
+
+
+
+
+} // end of namespace cppbn
 
 #define RESET       "\033[0m"
 #define RED         "\033[31m"      /* Red */

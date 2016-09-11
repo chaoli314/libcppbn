@@ -7,6 +7,7 @@
 
 #include <string>
 #include <iostream>
+#include <sstream>
 
 class var {
 
@@ -18,13 +19,19 @@ public:
 
     size_t getCard() const { return card_; }
 
-    friend std::ostream &operator<<(std::ostream &os, const var &dt) { return (os << "var" << dt.node_index_); }
-
-    /// @name relational operators
-    //@{
-    bool operator<(const var &rhs) const {
-        return node_index_ < rhs.node_index_;
+    operator std::string() const {
+        std::ostringstream oss;
+        oss << *this;
+        return oss.str();
     }
+
+    friend std::ostream &operator<<(std::ostream &os, const var &x) { return (os << "var" << x.node_index_); }
+
+    /// @name Relational operators
+    //@{
+    bool operator==(const var &rhs) const { return node_index_ == rhs.node_index_; }
+
+    bool operator<(const var &rhs) const { return node_index_ < rhs.node_index_; }
 
     bool operator>(const var &rhs) const {
         return rhs < *this;
@@ -36,13 +43,6 @@ public:
 
     bool operator>=(const var &rhs) const {
         return !(*this < rhs);
-    }
-    //@}
-
-    /// @name equality operators
-    //@{
-    bool operator==(const var &rhs) const {
-        return node_index_ == rhs.node_index_;
     }
 
     bool operator!=(const var &rhs) const {
