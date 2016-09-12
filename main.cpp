@@ -22,6 +22,9 @@ int main() {
     std::cout << BOLDRED << "BOLD red text" << RESET<< " normal text" << RED<< " red text" << RESET << std::endl;
 #endif
 
+
+
+
     return 0;
 }
 

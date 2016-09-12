@@ -29,9 +29,9 @@ public:
     //  typedef Container container_type;
 
 
+    sorted_set() : c() {}
 
     sorted_set(const E &e) : c() { c.push_back(e); }
-    sorted_set() : c() {}
 
     bool empty() const {
         return c.empty();
@@ -72,19 +72,12 @@ public:
  * @name Modifiers
  * */
     //@{
-
-
-
-    bool insert(const E &e) {
-        // iterator pointing to the first element does not less than e
+    void insert(const E &e) {
+        // it pointing to the first element does not less than e
         auto it = std::lower_bound(c.cbegin(), c.cend(), e);
         if (c.end() == it) c.push_back(e); // if e is the max
         if (e < *it) c.insert(it, e);   // if e is should be located here
-        if (e == *it) return false;// if e is duplicate
-        return true;
     }
-
-
     //@}
 
 /**
@@ -96,13 +89,17 @@ public:
 /// Function 1 in group 2. Brief.
 /** Function 1 in group 2. Details. */
 
-    bool includes(const sorted_set &r) const {
-        return std::includes(this->c.cbegin(), this->c.cend(), r.c.cbegin(), r.c.cend());
+    bool includes(const sorted_set &X) const {
+        return std::includes(this->c.cbegin(), this->c.cend(), X.c.cbegin(), X.c.cend());
     }
 
-/** Function 2 in group 2. Details. */
-    bool contains(const E &x) const {
-        return std::binary_search(c.cbegin(), c.cend(), x);
+    /** Function 2 in group 2. Details. */
+    bool contains(const E &e) const {
+        return std::binary_search(c.cbegin(), c.cend(), e);
+    }
+
+    bool disjoint(const sorted_set &X) const {
+        return (*this & X).empty();
     }
 
     // bool disjoint(const sorted_set & r)    {   return true;  }
