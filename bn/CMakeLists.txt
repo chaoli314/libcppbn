@@ -10,11 +10,11 @@ set(HEADER_FILES
         bn007.h
         typedefs.h
 
-        ad_tree.h
+        AD_tree.h
         contingency_table.h
 
         sorted_set.h
-        var.h Factor.h VarSet.h)
+        Factor.h HuginFormatFile.h)
 
 set(SOURCE_FILES
         bn007.cpp

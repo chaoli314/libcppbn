@@ -63,14 +63,13 @@ public:
 
     Node(BayesianNetwork *network,  ///< Container has this Node
          const string &nodeName,
-         size_t nodeIndex) :
+         const size_t &nodeIndex) :
             network_(network), node_name_(nodeName), node_index_(nodeIndex) {}
 
 private:
     BayesianNetwork *network_; ///< Brief
-
-    std::string node_name_;  //!< The name of this node
     size_t node_index_; ///< The index of this node
+    std::string node_name_;  //!< The name of this node
 
     std::vector<std::string> stateLabels_;
     std::map<std::string, size_t> label_to_index_;

@@ -11,7 +11,7 @@ class contingency_table {
 
 public:
 
-#if !defined(NDEBUG)
+#ifdef REPORT_STATS
     static int count;
 #endif
 
@@ -19,7 +19,7 @@ public:
 private:
 };
 
-#if !defined(NDEBUG)
+#ifdef REPORT_STATS
 int contingency_table::count = 0;
 #endif
 

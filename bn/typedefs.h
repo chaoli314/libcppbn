@@ -13,9 +13,6 @@ namespace cppbn{
     using real = double;
     using Bigint = boost::multiprecision::checked_cpp_int;
 
-
-
-
 } // end of namespace cppbn
 
 #define RESET       "\033[0m"

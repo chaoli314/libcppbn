@@ -14,8 +14,12 @@ using cppbn::real;
 class Factor {
 
 private:
+
+    //VarSet _vs;
+
+    // cards;
+
     std::vector<real> _p;
-            //VarSet _vs;
 public:
 
     // TFactor ( real p = 1 ) : _vs(), _p(1,p) {}

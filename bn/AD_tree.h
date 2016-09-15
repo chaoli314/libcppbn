@@ -9,7 +9,7 @@
 #include <vector>
 #include "contingency_table.h"
 using namespace std;
-class ad_tree {
+class AD_tree {
 
 public:
     friend class contingency_table;
@@ -18,24 +18,24 @@ private:
     using Nums = std::vector<size_t> ;
 
     struct AD_node {
-#if !defined(NDEBUG)
+#ifdef REPORT_STATS
         static int count;
 #endif
     };
 
-#if !defined(NDEBUG)
+#ifdef REPORT_STATS
     int AD_node::count = 0;
 #endif
 
 
     struct Vary_node {
-#if !defined(NDEBUG)
+#ifdef REPORT_STATS
         static int count;
 #endif
 
     };
 
-#if !defined(NDEBUG)
+#ifdef REPORT_STATS
     int Vary_node::count = 0;
 #endif
 
