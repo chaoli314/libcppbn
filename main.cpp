@@ -6,7 +6,7 @@
 
 #include <boost/rational.hpp>
 #include "bn/BayesianNetwork.h"
-#include "bn/sorted_set.h"
+#include "sorted_set.h"
 #include "bn/typedefs.h"
 #include <fstream>
 #include <exception>
@@ -18,10 +18,6 @@
 using namespace std;
 
 int main() {
-
-#if !defined(NDEBUG)
-    cout << BOLDRED << "DEBUG code is here!"<< RESET << " normal text" << RED<< " red text" << RESET << std::endl;
-#endif
 
     BayesianNetwork network;
 

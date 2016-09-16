@@ -7,15 +7,17 @@
 
 #include <vector>
 #include "typedefs.h"
-
+#include "sorted_set.h"
+#include "var.h"
 
 using cppbn::real;
+
 
 class Factor {
 
 private:
 
-    //VarSet _vs;
+    //sorted_set<var> Scope_;
 
     // cards;
 

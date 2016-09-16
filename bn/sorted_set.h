@@ -8,111 +8,175 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include <sstream>
+
 
 using namespace std;
 
-template<class E>
+template<typename E>
 class sorted_set {
-private:
-    using Container = std::vector<E>;
 public:
+    using Container = std::vector<E>;
+
     typedef typename Container::size_type size_type;
+
+    typedef typename Container::reference reference;
+    typedef typename Container::const_reference const_reference;
+
     typedef typename Container::iterator iterator;
     typedef typename Container::const_iterator const_iterator;
 
-    // typedef typename Container::value_type value_type;
-    //  typedef value_type&                                         reference;
-    //  typedef const value_type&                                   const_reference;
-
-    // typedef typename Container::reference reference;
-    // typedef typename Container::const_reference const_reference;
-    //  typedef Container container_type;
-
-
-    sorted_set() : c() {}
-
-    sorted_set(const E &e) : c() { c.push_back(e); }
-
-    bool empty() const {
-        return c.empty();
-    }
-
-    size_type size() const {
-        return c.size();
-    }
-
-    //    reference       operator[](size_type n){}
-    //  const_reference operator[](size_type n) const{}
-
-/**
- * @name Group
- * */
-    //@{
-    /** Function without group. Details. */
-    sorted_set operator-(const sorted_set &r) const {
-        sorted_set result;
-        std::set_difference(c.cbegin(), c.cend(), r.c.cbegin(), r.c.cend(), std::back_inserter(result));
-        return result;
-    }
-
-    sorted_set operator&(const sorted_set &r) const {
-        sorted_set result;
-        std::set_intersection(c.cbegin(), c.cend(), r.c.cbegin(), r.c.cend(), std::back_inserter(result.c));
-        return result;
-    }
-
-    sorted_set operator|(const sorted_set &r) const {
-        sorted_set result;
-        std::set_union(c.cbegin(), c.cend(), r.c.cbegin(), r.c.cend(), std::back_inserter(result.c));
-        return result;
-    }
-    //@}
-
-/**
- * @name Modifiers
- * */
-    //@{
-    void insert(const E &e) {
-        // it pointing to the first element does not less than e
-        auto it = std::lower_bound(c.cbegin(), c.cend(), e);
-        if (c.end() == it) c.push_back(e); // if e is the max
-        if (e < *it) c.insert(it, e);   // if e is should be located here
-    }
-    //@}
-
-/**
- * @name Lookup
- * Details
- * */
-///@{
-
-/// Function 1 in group 2. Brief.
-/** Function 1 in group 2. Details. */
-
-    bool includes(const sorted_set &X) const {
-        return std::includes(this->c.cbegin(), this->c.cend(), X.c.cbegin(), X.c.cend());
-    }
-
-    /** Function 2 in group 2. Details. */
-    bool contains(const E &e) const {
-        return std::binary_search(c.cbegin(), c.cend(), e);
-    }
-
-    bool disjoint(const sorted_set &X) const {
-        return (*this & X).empty();
-    }
-
-    // bool disjoint(const sorted_set & r)    {   return true;  }
-
-///@}
-
-
-
-
-
+    typedef typename Container::reverse_iterator reverse_iterator;
+    typedef typename Container::const_reverse_iterator const_reverse_iterator;
 private:
-    Container c;
-};
+    Container elements_;
+public:
 
+    /// @name Constructor
+    //@{
+    sorted_set() : elements_() {}
+
+    sorted_set(const E &e) : elements_() { elements_.push_back(e); }
+    //@}
+
+    /// @name Element access
+    //@{
+    reference operator[](size_t pos) {
+        return elements_[pos];
+    }
+
+    const_reference operator[](size_t pos) const {
+        return elements_[pos];
+    }
+    //@}
+
+    /// @name Capacity
+    //@{
+    size_type size() const { return elements_.size(); }
+
+    bool empty() const { elements_.empty(); }
+    //@}
+
+    /// @name Iterators
+    //@{
+    iterator begin() { return elements_.begin(); }
+    const_iterator begin() const noexcept{ return elements_.begin(); }
+
+    const_iterator cbegin() const { return elements_.cbegin(); }
+
+    iterator end()  { return elements_.end(); }
+    const_iterator end() const noexcept{ return elements_.end(); }
+
+    const_iterator cend() const { return elements_.cend(); }
+
+    reverse_iterator rbegin() { return elements_.rbegin(); }
+
+    const_reverse_iterator crbegin() const { return elements_.crbegin(); }
+
+    reverse_iterator rend() { return elements_.rend(); }
+
+    const_reverse_iterator crend() const { return elements_.crend(); }
+    //@}
+
+    ///@name Comparisons
+    //@{
+    bool operator==(const sorted_set &rhs) const {
+        return elements_ == rhs.elements_;
+    }
+
+    bool operator!=(const sorted_set &rhs) const {
+        return !(rhs == *this);
+    }
+
+    bool operator<(const sorted_set &rhs) const {
+        return elements_ < rhs.elements_;
+    }
+
+    bool operator>(const sorted_set &rhs) const {
+        return rhs < *this;
+    }
+
+    bool operator<=(const sorted_set &rhs) const {
+        return !(rhs < *this);
+    }
+
+    bool operator>=(const sorted_set &rhs) const {
+        return !(*this < rhs);
+    }
+    //@}
+
+    /// @name Element
+    //@{
+    bool contains(const E &e) const {
+        return std::binary_search(elements_.cbegin(), elements_.cend(), e);
+    }
+
+    void insert(const E &e) {
+        iterator it = std::lower_bound(elements_.begin(), elements_.end(), e);
+        if ((elements_.end() == it/* e最大*/) || (e != *it/* e不重复*/))
+            elements_.insert(it, e);
+    }
+
+    void erases(const E &e) {
+        iterator it = lower_bound(elements_.begin(), elements_.end(), e);
+        if ((elements_.end() != it/* e非最大*/) && (e == *it/* e找到*/))
+            elements_.erase(it);
+    }
+    //@}
+
+    /// \name Set operations (on sorted ranges)
+    //@{
+    sorted_set operator-(const sorted_set &rhs) const {
+        sorted_set res;
+        std::set_difference(elements_.cbegin(), elements_.cend(),
+                            rhs.elements_.cbegin(), rhs.elements_.cend(),
+                            std::back_inserter(res.elements_));
+        return res;
+    }
+
+    sorted_set operator&(const sorted_set &rhs) const {
+        sorted_set res;
+        std::set_intersection(elements_.cbegin(), elements_.cend(),
+                              rhs.elements_.cbegin(), rhs.elements_.cend(),
+                              std::back_inserter(res.elements_));
+        return res;
+    }
+
+    sorted_set operator|(const sorted_set &rhs) const {
+        sorted_set res;
+        std::set_union(elements_.cbegin(), elements_.cend(),
+                       rhs.elements_.cbegin(), rhs.elements_.cend(),
+                       std::back_inserter(res.elements_));
+        return res;
+    }
+
+    bool includes(const sorted_set &rhs) const {
+        return std::includes(elements_.cbegin(), elements_.cend(), rhs.elements_.cbegin(), rhs.elements_.cend());
+    }
+
+    bool disjoint(const sorted_set &rhs) const {
+        return (*this & rhs).empty();
+    }
+
+    bool intersects(const sorted_set &rhs) const { return !disjoint(rhs); }
+    //@}
+
+    /// @name std::cout & std::string
+    //@{
+    friend std::ostream &operator<<(std::ostream &os, const sorted_set &variables) {
+        os << "{";
+        for (auto it = variables.cbegin(); variables.cend() != it; ++it)
+            os << (it != variables.cbegin() ? ", " : "") << *it;
+        os << "}";
+        return os;
+    }
+
+    operator std::string() const {
+        std::ostringstream oss;
+        oss << *this;
+        return oss.str();
+    }
+    //@}
+};
 
 #endif //LIBCPPBN_SORTED_SET_H
