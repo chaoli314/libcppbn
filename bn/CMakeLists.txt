@@ -14,7 +14,7 @@ set(HEADER_FILES
         contingency_table.h
 
         sorted_set.h
-        Factor.h HuginFormatFile.h var.h VarSet.h)
+        Factor.h HuginFormatFile.h var.h)
 
 set(SOURCE_FILES
         bn007.cpp

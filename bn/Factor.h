@@ -12,22 +12,14 @@
 
 using cppbn::real;
 
-
 class Factor {
 
 private:
-
-    //sorted_set<var> Scope_;
-
-    // cards;
-
+    sorted_set<var> Scope_;
     std::vector<real> _p;
 public:
 
-    // TFactor ( real p = 1 ) : _vs(), _p(1,p) {}
 
-    ///    Return the size of this table.
-    //size_t 	getSize () const {return 0;}
 
 };
 

@@ -15,8 +15,13 @@ using namespace std;
 
 template<typename E>
 class sorted_set {
-public:
+
+private:
     using Container = std::vector<E>;
+
+    Container elements_;
+
+public:
 
     typedef typename Container::size_type size_type;
 
@@ -28,8 +33,6 @@ public:
 
     typedef typename Container::reverse_iterator reverse_iterator;
     typedef typename Container::const_reverse_iterator const_reverse_iterator;
-private:
-    Container elements_;
 public:
 
     /// @name Constructor
@@ -37,6 +40,39 @@ public:
     sorted_set() : elements_() {}
 
     sorted_set(const E &e) : elements_() { elements_.push_back(e); }
+    //@}
+
+    /// @name Iterators
+    //@{
+    iterator begin() noexcept { return elements_.begin(); }
+
+    const_iterator begin() const noexcept { return elements_.begin(); }
+
+    iterator end() noexcept { return elements_.end(); }
+
+    const_iterator end() const noexcept { return elements_.end(); }
+
+    reverse_iterator rbegin() noexcept { return elements_.rbegin(); }
+
+    const_reverse_iterator rbegin() const noexcept { return elements_.rbegin(); }
+
+    reverse_iterator rend() noexcept { return elements_.rend(); }
+
+    const_reverse_iterator rend() const noexcept { return elements_.rend(); }
+
+    const_iterator cbegin() const noexcept { return elements_.cbegin(); }
+
+    const_iterator cend() const noexcept { return elements_.cend(); }
+
+    const_reverse_iterator crbegin() const noexcept { return elements_.crbegin(); }
+
+    const_reverse_iterator crend() const noexcept { return elements_.crend(); }
+    //@}
+    /// @name Capacity
+    //@{
+    size_type size() const { return elements_.size(); }
+
+    bool empty() const { elements_.empty(); }
     //@}
 
     /// @name Element access
@@ -48,34 +84,6 @@ public:
     const_reference operator[](size_t pos) const {
         return elements_[pos];
     }
-    //@}
-
-    /// @name Capacity
-    //@{
-    size_type size() const { return elements_.size(); }
-
-    bool empty() const { elements_.empty(); }
-    //@}
-
-    /// @name Iterators
-    //@{
-    iterator begin() { return elements_.begin(); }
-    const_iterator begin() const noexcept{ return elements_.begin(); }
-
-    const_iterator cbegin() const { return elements_.cbegin(); }
-
-    iterator end()  { return elements_.end(); }
-    const_iterator end() const noexcept{ return elements_.end(); }
-
-    const_iterator cend() const { return elements_.cend(); }
-
-    reverse_iterator rbegin() { return elements_.rbegin(); }
-
-    const_reverse_iterator crbegin() const { return elements_.crbegin(); }
-
-    reverse_iterator rend() { return elements_.rend(); }
-
-    const_reverse_iterator crend() const { return elements_.crend(); }
     //@}
 
     ///@name Comparisons
