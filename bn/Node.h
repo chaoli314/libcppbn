@@ -47,14 +47,7 @@ public:
     /**    That is, add a directed link from parent to this node.     */
     void addParent(Node *parent) { parents_.push_back(parent); }
 
-    void addState(const std::string &label) {
-        if (stateLabel_to_stateIndex_.cend() != stateLabel_to_stateIndex_.find(label)) {
-            /* The same stateLabel has already existed */
-            throw std::runtime_error("Same state name: " + label + ".");
-        }
-        stateLabel_to_stateIndex_[label] = stateLabels_.size();
-        stateLabels_.push_back(label);
-    }
+    void addState(const std::string &label);
     //@}
 
 ///@name constructor
@@ -77,5 +70,12 @@ private:
     //std::vector<std::vector<cppbn::real>> data_;
 };
 
-
+void Node::addState(const std::string &label) {
+    if (stateLabel_to_stateIndex_.cend() != stateLabel_to_stateIndex_.find(label)) {
+        /* The same stateLabel has already existed */
+        throw std::runtime_error("Same state name: " + label + ".");
+    }
+    stateLabel_to_stateIndex_[label] = stateLabels_.size();
+    stateLabels_.push_back(label);
+}
 #endif //LIBCPPBN_NODE_H

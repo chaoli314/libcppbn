@@ -8,6 +8,8 @@
 #include <iostream>
 #include <sstream>
 
+#include "typedefs.h"
+
 class var {
 private:
     size_t var_index_;
@@ -19,6 +21,8 @@ public:
     /// Return the number of states of this node.
     size_t getCard() const { return card_; }
 
+    /// @name Comparisons
+    //@{
     bool operator==(const var &rhs) const {
         return var_index_ == rhs.var_index_;
     }
@@ -42,6 +46,7 @@ public:
     bool operator>=(const var &rhs) const {
         return !(*this < rhs);
     }
+    //@}
 
     /// @name std::cout & std::string
     //@{
@@ -57,5 +62,11 @@ public:
     //@}
 };
 
-
+/// get the number of joint assignments to vars
+template <class range_of_vars>
+cppbn::Bigint getNumberOfAssignment(const range_of_vars &vars) {
+    cppbn::Bigint tableSize = 1;
+    std::for_each(vars.cbegin(), vars.cend(), [&tableSize](const auto &v) { tableSize *= v.getCard(); } );
+    return tableSize;
+}
 #endif //LIBCPPBN_VAR_H

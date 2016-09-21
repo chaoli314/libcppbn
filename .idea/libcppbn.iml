@@ -15,11 +15,13 @@
       <sourceFolder url="file://$MODULE_DIR$/bn/contingency_table.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/bn/typedefs.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/bn_tests/basic_tests/typedefs_check.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/bn_tests/basic_tests/var_check.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/bn_tests/basic_tests/HuginFormatFile_check.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/bn_tests/basic_tests/basic_check.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/bn_tests/basic_tests/bn007_check.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/bn_tests/basic_tests/sorted_set_check.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/bn_tests/basic_tests/basic_check.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/bn_tests/basic_tests/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/bn_tests/basic_tests/typedefs_check.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/bn_tests/lib/googletest-master/googlemock/src/gmock-all.cc" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/bn_tests/lib/googletest-master/googlemock/src/gmock_main.cc" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/bn_tests/lib/googletest-master/googlemock/CMakeLists.txt" isTestSource="false" />

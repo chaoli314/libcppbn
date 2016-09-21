@@ -16,10 +16,16 @@ class Factor {
 
 private:
     sorted_set<var> Scope_;
-    std::vector<real> _p;
+    std::vector<real> p_;
 public:
 
+    /// \name Constructors and destructors
+    //@{
 
+    /// Constructs factor depending on variables in \a vars with all values set to \a p
+    Factor( const sorted_set<var>& vars, std::vector<real> p ) : Scope_(vars), p_(p) {}
+
+    //@}
 
 };
 

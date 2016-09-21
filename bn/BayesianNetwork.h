@@ -28,7 +28,7 @@ public:
 
     size_t getNodeIndex(const std::string &nodeName) { return name_to_index_[nodeName]; }
 
-    std::string getNodeName(size_t nodeIndex) const { return nodes_[nodeIndex].getName(); }
+     std::string getNodeName(size_t nodeIndex) const  { return nodes_[nodeIndex].getName(); }
     //@}
 
 
@@ -58,7 +58,7 @@ Node *BayesianNetwork::addNode(const std::string &nodeName) {
     const size_t nodeIndex = name_to_index_.size();
 
     name_to_index_[nodeName] = nodeIndex;
-    Node node{this, nodeName, nodeIndex /**bn, name, int_ID */};
+    Node node{this, nodeName, nodeIndex};
     nodes_.push_back(node);
 
     return &nodes_[nodeIndex];

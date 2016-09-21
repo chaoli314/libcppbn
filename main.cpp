@@ -26,8 +26,12 @@ int main() {
 
     readHuginNet(&network, file);
 
-//cout <<    network.getNodeName(2) << "index at " << 2 << endl;
+    Node* node = network.addNode("hello");
 
+    node->addState("s1");
+    node->addState("s2");
+
+    cout << network.getNodeName(0)  <<": "<<     node->getStateLabel(0) <<     node->getStateLabel(1) << endl;
 
 
     return 0;
