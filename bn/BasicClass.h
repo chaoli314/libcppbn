@@ -2,16 +2,16 @@
 // Created by chao li on 9/7/16.
 //
 
-#ifndef LIBCPPBN_BN007_H
-#define LIBCPPBN_BN007_H
+#ifndef LIBCPPBN_BasicClass_H
+#define LIBCPPBN_BasicClass_H
 
 #include <iostream>
 #include <string>
 
 using namespace std;
 
-/// only for testing PC works
-class bn007 {
+/// only for testing that PC works
+class BasicClass {
 
 public:
     /// 构造函数
@@ -33,13 +33,13 @@ public:
 
     /// \return
 
-    bn007(){
-        std::cout << "new an empty bn007 object." << std::endl;
+    BasicClass() {
+        //std::cout << std::endl << "new an BasicClass object." << std::endl;
     }
 
 
-    ~bn007(){
-        std::cout << "delete an empty bn007 object." << std::endl;
+    ~BasicClass() {
+        //std::cout << std::endl << "delete an BasicClass object." << std::endl;
     }
 
 /*! \brief Brief description.
@@ -48,21 +48,20 @@ public:
  *  Detailed description starts here.
  */
 
-    void talk(){
-        std::cout << "talk: 我是007!" << std::endl;
+    void start() {
+        //std::cout << std::endl << "start: I am BasicClass!" << std::endl;
     }
 
     //! 说一个string函数
     //! \param x
-    void tell(const std::string& x);
+    void stop();
 
 private:
     int var1;//!< Brief description after the member
     int var2;
     int var; /*!< Detailed description after the member */
 
-
 };
 
 
-#endif //LIBCPPBN_BN007_H
+#endif //LIBCPPBN_BasicClass_H

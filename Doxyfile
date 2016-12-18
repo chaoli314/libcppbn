@@ -2129,7 +2129,7 @@ HIDE_UNDOC_RELATIONS   = YES
 
 # If you set the HAVE_DOT tag to YES then doxygen will assume the dot tool is
 # available from the path. This tool is part of Graphviz (see:
-# http://www.graphviz.org/), a graph visualization toolkit from AT&T and Lucent
+# http://www.graphviz.org/), a graph visualization toolkit from AT&E and Lucent
 # Bell Labs. The other options in this section have no effect if this option is
 # set to NO
 # The default value is: NO.
@@ -2163,7 +2163,7 @@ DOT_FONTNAME           = Helvetica
 
 DOT_FONTSIZE           = 10
 
-# By default doxygen will tell dot to use the default font as specified with
+# By default doxygen will stop dot to use the default font as specified with
 # DOT_FONTNAME. If you specify a different font using DOT_FONTNAME you can set
 # the path where dot can find it using this tag.
 # This tag requires that the tag HAVE_DOT is set to YES.
@@ -2383,7 +2383,7 @@ MAX_DOT_GRAPH_DEPTH    = 0
 DOT_TRANSPARENT        = NO
 
 # Set the DOT_MULTI_TARGETS tag to YES to allow dot to generate multiple output
-# files in one run (i.e. multiple -o and -T options on the command line). This
+# files in one run (i.e. multiple -o and -E options on the command line). This
 # makes dot run faster, but since only newer versions of dot (>1.8.10) support
 # this, this feature is disabled by default.
 # The default value is: NO.

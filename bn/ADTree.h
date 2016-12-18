@@ -9,7 +9,8 @@
 #include <vector>
 #include "contingency_table.h"
 using namespace std;
-class AD_tree {
+
+class ADTree {
 
 public:
     friend class contingency_table;
@@ -17,18 +18,26 @@ public:
 private:
     using Nums = std::vector<size_t> ;
 
-    struct AD_node {
+    struct ADNode {
 #ifdef REPORT_STATS
         static int count;
 #endif
     };
 
+/*    struct Node {
+        vector<shared_ptr<Node>> children;
+        Data data;
+    };*/
+
+
+
+
 #ifdef REPORT_STATS
-    int AD_node::count = 0;
+    int ADNode::count = 0;
 #endif
 
 
-    struct Vary_node {
+    struct VaryNode {
 #ifdef REPORT_STATS
         static int count;
 #endif
@@ -36,7 +45,7 @@ private:
     };
 
 #ifdef REPORT_STATS
-    int Vary_node::count = 0;
+    int VaryNode::count = 0;
 #endif
 
 
@@ -44,7 +53,9 @@ public:
 
 
 private:
-    std::unique_ptr<AD_node> root_;
+
+    std::unique_ptr<ADNode> root_;
+
     size_t R_min_;
 };
 

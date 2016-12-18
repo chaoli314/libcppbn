@@ -4,21 +4,16 @@
 
 #include "gtest/gtest.h"
 #include "typedefs.h"
+#include <cstdint>
+
 #include <iostream>
 
-TEST(typedefs_check, test_eq) {
-    EXPECT_EQ(1, 1);
-}
-
-TEST(typedefs_check, test_bigint) {
+TEST(typedefs_check, test_BigInteger) {
 
     // Repeat at arbitrary precision:
-    cppbn::Bigint large_number = static_cast<size_t >(1);
-    for(size_t i = 1; i <= 100; ++i)
-        large_number *= i;
-    //std::cout << "large int " << large_number <<std::endl; // prints 100!
-    EXPECT_LT(INT64_MAX, large_number); // large_number is really larger than INT64_MAX.
-
-
-
+    cppbn::BigInteger u = 1;
+    for(auto i = 1; i <= 100; ++i)
+        u *= i;
+    EXPECT_LT(INT64_MAX, u); // INT64_MAX is lower than u
+    EXPECT_ANY_THROW(static_cast<size_t >(u)); // Throws a std::overflow_error.
 }

@@ -38,7 +38,7 @@ public:
 
     /**  @name Capacity */
     //@{
-    size_t getNumberOfStates() const { return stateLabels_.size(); }
+    size_t getCard() const { return stateLabels_.size(); }
     //@}
 
     /**  @name Modifiers */
@@ -59,10 +59,10 @@ public:
 //@}
 private:
     BayesianNetwork *network_; ///< Brief
-    size_t node_index_; ///< The index of this node
-    std::string node_name_;  //!< The name of this node
+    size_t          node_index_; ///< The index of this node
+    std::string     node_name_;  //!< The name of this node
 
-    std::vector<std::string> stateLabels_;
+    std::vector<std::string>      stateLabels_;
     std::map<std::string, size_t> stateLabel_to_stateIndex_;
 
     vector<Node *> parents_;    //!< Parent nodes of *this node
@@ -78,4 +78,5 @@ void Node::addState(const std::string &label) {
     stateLabel_to_stateIndex_[label] = stateLabels_.size();
     stateLabels_.push_back(label);
 }
+
 #endif //LIBCPPBN_NODE_H

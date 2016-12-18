@@ -2,19 +2,17 @@
 // Created by chao li on 9/7/16.
 //
 
-#ifndef LIBCPPBN_TYPEDEFS_H_H
-#define LIBCPPBN_TYPEDEFS_H_H
+#ifndef LIBCPPBN_BN_TYPEDEFS_H
+#define LIBCPPBN_BN_TYPEDEFS_H
 
-#include <string>
 #include <boost/multiprecision/cpp_int.hpp>
 
-namespace cppbn{
+namespace cppbn {
 
+    using BigInteger = boost::multiprecision::checked_cpp_int;
     using real = double;
-    using Bigint = boost::multiprecision::checked_cpp_int;
 
     //using varset =
-
 
 } // end of namespace cppbn
 
