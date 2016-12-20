@@ -41,17 +41,17 @@ public:
     //@{
     sorted_set() = default; // empty
 
-    sorted_set(const sorted_set &x) = default; // copy
+    sorted_set(const sorted_set& x) = default; // copy
 
-    sorted_set &operator=(const sorted_set &x)= default; // copy
+    sorted_set& operator=(const sorted_set& x)= default; // copy
 
-    sorted_set(sorted_set &&) = default; // move
+    sorted_set(sorted_set&&) = default; // move
 
-    sorted_set& operator=(sorted_set &&) = default; // move
+    sorted_set& operator=(sorted_set&&) = default; // move
 
     ~sorted_set() = default; // destructor
 
-    sorted_set(const value_type &e) : elements_() { elements_.push_back(e); }
+    sorted_set(const value_type& e) : elements_() { elements_.push_back(e); }
 
     template<typename InputIterator>
     sorted_set(InputIterator first, InputIterator last) : elements_(first, last) {
@@ -112,27 +112,27 @@ public:
     ///@name Comparison operators
     //@{
 
-    bool operator==(const sorted_set &rhs) const {
+    bool operator==(const sorted_set& rhs) const {
         return elements_ == rhs.elements_;
     }
 
-    bool operator!=(const sorted_set &rhs) const {
+    bool operator!=(const sorted_set& rhs) const {
         return !(rhs == *this);
     }
 
-    bool operator<(const sorted_set &rhs) const {
+    bool operator<(const sorted_set& rhs) const {
         return elements_ < rhs.elements_;
     }
 
-    bool operator>(const sorted_set &rhs) const {
+    bool operator>(const sorted_set& rhs) const {
         return rhs < *this;
     }
 
-    bool operator<=(const sorted_set &rhs) const {
+    bool operator<=(const sorted_set& rhs) const {
         return !(rhs < *this);
     }
 
-    bool operator>=(const sorted_set &rhs) const {
+    bool operator>=(const sorted_set& rhs) const {
         return !(*this < rhs);
     }
     //@}
@@ -141,24 +141,24 @@ public:
     //@{
 
 
-    void insert(const value_type &e) {
+    void insert(const value_type& e) {
         auto it = std::lower_bound(elements_.begin(), elements_.end(), e);
         if ((elements_.end() == it/* e最大*/) || (e != *it/* e has been in the set */))
             elements_.insert(it, e);
     }
 
-    void erase(const value_type &e) {
+    void erase(const value_type& e) {
         auto it = lower_bound(elements_.begin(), elements_.end(), e);
         if ((elements_.end() != it/* e <= max value */) && (e == *it/* find e*/))
             elements_.erase(it);
     }
 
-    bool contains(const value_type &t) const { return std::binary_search(elements_.cbegin(), elements_.cend(), t); }
+    bool contains(const value_type& t) const { return std::binary_search(elements_.cbegin(), elements_.cend(), t); }
     //@}
 
     /// \name Set operations (on sorted ranges)
     //@{
-    sorted_set operator-(const sorted_set &rhs) const {
+    sorted_set operator-(const sorted_set& rhs) const {
         sorted_set res;
         std::set_difference(elements_.cbegin(), elements_.cend(),
                             rhs.elements_.cbegin(), rhs.elements_.cend(),
@@ -166,7 +166,7 @@ public:
         return res;
     }
 
-    sorted_set operator&(const sorted_set &rhs) const {
+    sorted_set operator&(const sorted_set& rhs) const {
         sorted_set res;
         std::set_intersection(elements_.cbegin(), elements_.cend(),
                               rhs.elements_.cbegin(), rhs.elements_.cend(),
@@ -174,7 +174,7 @@ public:
         return res;
     }
 
-    sorted_set operator|(const sorted_set &rhs) const {
+    sorted_set operator|(const sorted_set& rhs) const {
         sorted_set res;
         std::set_union(elements_.cbegin(), elements_.cend(),
                        rhs.elements_.cbegin(), rhs.elements_.cend(),
@@ -182,18 +182,18 @@ public:
         return res;
     }
 
-    bool includes(const sorted_set &rhs) const {
+    bool includes(const sorted_set& rhs) const {
         return std::includes(elements_.cbegin(), elements_.cend(), rhs.elements_.cbegin(), rhs.elements_.cend());
     }
 
-    bool disjoint(const sorted_set &rhs) const { return (*this & rhs).empty(); }
+    bool disjoint(const sorted_set& rhs) const { return (*this & rhs).empty(); }
 
-    bool intersects(const sorted_set &rhs) const { return !disjoint(rhs); }
+    bool intersects(const sorted_set& rhs) const { return !disjoint(rhs); }
     //@}
 
     /// @name std::cout & std::string
     //@{
-    friend std::ostream &operator<<(std::ostream &os, const sorted_set &variables) {
+    friend std::ostream& operator<<(std::ostream& os, const sorted_set& variables) {
         os << "{";
         for (auto it = variables.cbegin(); it != variables.cend(); it++)
             os << (it != variables.cbegin() ? ", " : "") << *it;

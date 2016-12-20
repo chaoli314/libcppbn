@@ -21,9 +21,9 @@ public:
     //@{
     var() = delete;
 
-    var &operator=(const var &) = default;
+    var& operator=(const var&) = default;
 
-    var(const var &) = default;
+    var(const var&) = default;
 
     ~var() = default;
 
@@ -39,22 +39,22 @@ public:
 
     /// @name Comparison operators
     //@{
-    bool operator==(const var &rhs) const { return var_index_ == rhs.var_index_; }
+    bool operator==(const var& rhs) const { return var_index_ == rhs.var_index_; }
 
-    bool operator!=(const var &rhs) const { return !(rhs == *this); }
+    bool operator!=(const var& rhs) const { return !(rhs == *this); }
 
-    bool operator<(const var &rhs) const { return var_index_ < rhs.var_index_; }
+    bool operator<(const var& rhs) const { return var_index_ < rhs.var_index_; }
 
-    bool operator>(const var &rhs) const { return rhs < *this; }
+    bool operator>(const var& rhs) const { return rhs < *this; }
 
-    bool operator<=(const var &rhs) const { return !(rhs < *this); }
+    bool operator<=(const var& rhs) const { return !(rhs < *this); }
 
-    bool operator>=(const var &rhs) const { return !(*this < rhs); }
+    bool operator>=(const var& rhs) const { return !(*this < rhs); }
     //@}
 
     /// @name std::cout & toString
     //@{
-    friend std::ostream &operator<<(std::ostream &os, const var &n) {
+    friend std::ostream& operator<<(std::ostream& os, const var& n) {
         return os << "x" << n.var_index_;
     }
 

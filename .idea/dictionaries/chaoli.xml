@@ -1,10 +1,18 @@
 <component name="ProjectDictionaryState">
   <dictionary name="chaoli">
     <words>
+      <w>adtree</w>
+      <w>cbegin</w>
+      <w>cend</w>
+      <w>chao</w>
       <w>cout</w>
       <w>cppbn</w>
+      <w>crbegin</w>
+      <w>crend</w>
       <w>endl</w>
+      <w>iostream</w>
       <w>libcppbn</w>
+      <w>rbegin</w>
       <w>varset</w>
     </words>
   </dictionary>

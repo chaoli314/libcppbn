@@ -2,13 +2,14 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 add_executable(runBasicBNTests
 
-        basic_check.cpp # toy test.
-        basic_fixture_check.cpp # toy test.
+        basic_check.cc # toy test.
+        basic_fixture_check.cc # toy test.
 
         typedefs_check.cpp # cross-platform types.
 
         var_check.cc # basic discrete random variable.
-        sorted_set_check.cpp # a set of variables, varset.
+        sorted_set_check.cc # a set of variables, varset.
+
         HuginFormatFile_check.cpp # Hugin format.
         )
 
